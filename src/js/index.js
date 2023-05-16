@@ -1,0 +1,44 @@
+/*
+o que precisamos fazer? - quando clicarmos no botãode troca de tema temos que alterar a cor do tema da página para as cores do tema claro ou escuro
+
+-objetivo 1 - quando clicar no batão de troca de tema, adicionar a classe modo-escuro no body pra que os estilos do modo escuro sejam aplicados e mudar a imagem pra lua 
+    -passo 1 - pegar no js o elemento html correspondente ao botão de troca de tema
+    -passo 2 - dar um jeito de pegar no js o elemento html correponde ao body
+    -passo 3 - dar um jeito de indetificar o clique do usuário no botão de troca de tema 
+    -passo 4 - adicionar a classe modo escuro no body
+    -passo 5 - trocar a imagem de botão de troca de tema pra lua 
+    
+-objetivo 2 - quando clicar no botão de troca de tema, caso o body já tenha a classe modo-escuro, remover a classe pra mudar pro modo claroe mudar a imagem pro sol
+    -passo 6 - verificar se o body ja tem a classe modo-escuro
+    -passo 7 - remover a classe do modo-escuro no body
+    -passo 8 - trocar a imagem de troca de tema pra o sol
+*/
+
+//-objetivo 1 - quando clicar no batão de troca de tema, adicionar a classe modo-escuro no body pra que os estilos do modo escuro sejam aplicados e mudar a imagem pra lua 
+
+//-passo 1 - pegar no js o elemento html correspondente ao botão de troca de tema
+const botaoAlterarTema = document.getElementById("botao-alterar-tema");
+
+//-passo 2 - dar um jeito de pegar no js o elemento html correponde ao body
+const body = document.querySelector("body");
+
+const imagemBotaoTrocaDeTema = document.querySelector(".imagem-botao")
+// -passo 3 - dar um jeito de indetificar o clique do usuário no botão de troca de tema
+botaoAlterarTema.addEventListener("click", () => {
+
+    //-passo 6 - verificar se o body ja tem a classe modo-escuro
+    const modoEscuroEstaAtivo = body.classList.contains("modo-escuro");
+    //-passo 4 - adicionar a classe modo escuro no body
+    //-passo 7 - remover a classe do modo-escuro no body
+    body.classList.toggle("modo-escuro")
+
+    if (modoEscuroEstaAtivo) {
+        //-passo 7 - remover a classe do modo-escuro no body
+        // -passo 8 - trocar a imagem de troca de tema pra o sol
+        imagemBotaoTrocaDeTema.setAttribute("src", "src/imagens/sun.png")
+    } else {
+        //-passo 4 - adicionar a classe modo escuro no body
+        //-passo 5 - trocar a imagem de botão de troca de tema pra lua
+        imagemBotaoTrocaDeTema.setAttribute("src", "src/imagens/moon.png")
+    }
+});
